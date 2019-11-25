@@ -6,4 +6,6 @@ require "spicery"
 
 require "malfunction/version"
 
+require "malfunction/attribute_error"
+
 module Malfunction; end
