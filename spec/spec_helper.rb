@@ -9,6 +9,8 @@ require "shoulda-matchers"
 
 require "spicerack/spec_helper"
 
+require_relative "../lib/malfunction/spec_helper"
+
 SimpleCov.start do
   add_filter "/spec/"
   add_filter "/rspec/"
@@ -17,6 +19,12 @@ end
 require "malfunction"
 
 require_relative "support/shared_context/with_an_example_malfunction"
+
+require_relative "../spec/support/test_classes/plumbus_malfunction"
+require_relative "../spec/support/test_classes/grodus_malfunction"
+require_relative "../spec/support/test_classes/floob_malfunction"
+require_relative "../spec/support/test_classes/grumbo_malfunction"
+require_relative "../spec/support/test_classes/chumble_malfunction"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
