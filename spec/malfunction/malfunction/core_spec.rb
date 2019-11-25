@@ -12,41 +12,99 @@ RSpec.describe Malfunction::Malfunction::Core, type: :concern do
   end
 
   describe "#initialize" do
-    subject(:_initialize) { example_malfunction_class.new(details) }
-
+    let(:context) { double }
     let(:details) { nil }
 
-    context "without details" do
-      subject { example_malfunction_class.new }
+    context "without context" do
+      let(:context) { nil }
 
-      it { is_expected.to have_attributes(details: {}) }
+      context "when not contextualized" do
+        context "without details" do
+          subject { example_malfunction_class.new }
+
+          it { is_expected.to have_attributes(context: nil, details: {}) }
+        end
+
+        context "with details" do
+          subject { example_malfunction_class.new(details: details) }
+
+          let(:details) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
+
+          it { is_expected.to have_attributes(context: nil, details: details) }
+        end
+      end
+
+      context "when contextualized" do
+        let(:contextualized_as) { Faker::Internet.domain_word.to_sym }
+
+        before { example_malfunction_class.__send__(:contextualize, contextualized_as, allow_nil: allow_nil?) }
+
+        context "when allow_nil?" do
+          let(:allow_nil?) { true }
+
+          context "without details" do
+            subject { example_malfunction_class.new }
+
+            it { is_expected.to have_attributes(context: nil, details: {}) }
+          end
+
+          context "with details" do
+            subject { example_malfunction_class.new(details: details) }
+
+            let(:details) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
+
+            it { is_expected.to have_attributes(context: nil, details: details) }
+          end
+        end
+
+        context "when not allow_nil?" do
+          let(:allow_nil?) { false }
+
+          it "raises" do
+            expect { example_malfunction }.to raise_error ArgumentError, "#{example_malfunction_name} requires context"
+          end
+        end
+      end
     end
 
-    context "with nil details" do
-      let(:details) { nil }
+    context "with context" do
+      context "when not contextualized" do
+        it "raises" do
+          expect { example_malfunction }.
+            to raise_error ArgumentError, "#{example_malfunction_name} is not contextualized"
+        end
+      end
 
-      it { is_expected.to have_attributes(details: {}) }
-    end
+      context "when contextualized" do
+        let(:contextualized_as) { Faker::Internet.domain_word.to_sym }
 
-    context "with details" do
-      let(:details) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
+        before { example_malfunction_class.__send__(:contextualize, contextualized_as) }
 
-      it { is_expected.to have_attributes(details: details) }
-    end
+        context "without details" do
+          subject { example_malfunction_class.new(context) }
 
-    context "with options" do
-      subject { example_malfunction_class.new(**options) }
+          it { is_expected.to have_attributes(context: context, details: {}, contextualized_as => context) }
+        end
 
-      let(:options) { Hash[*Faker::Lorem.words(2 * rand(1..2))].symbolize_keys }
+        context "with nil details" do
+          let(:details) { nil }
 
-      it { is_expected.to have_attributes(details: options) }
-    end
+          it { is_expected.to have_attributes(context: context, details: {}) }
+        end
 
-    context "with other types" do
-      let(:details) { [] }
+        context "with details" do
+          let(:details) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
 
-      it "raises" do
-        expect { _initialize }.to raise_error ArgumentError, "details is invalid"
+          it { is_expected.to have_attributes(context: context, details: details) }
+        end
+
+        context "with non-standard details" do
+          let(:details) { [] }
+
+          it "raises" do
+            expect { example_malfunction }.to raise_error ArgumentError, "details is invalid"
+          end
+        end
       end
     end
   end

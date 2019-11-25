@@ -10,8 +10,9 @@ RSpec.describe Malfunction::MalfunctionBase, type: :malfunction do
   it { is_expected.to include_module Conjunction::Junction }
   it { is_expected.to have_conjunction_suffix "Malfunction" }
 
-  it { is_expected.to include_module Malfunction::Malfunction::Core }
   it { is_expected.to include_module Malfunction::Malfunction::AttributeErrors }
+  it { is_expected.to include_module Malfunction::Malfunction::Context }
+  it { is_expected.to include_module Malfunction::Malfunction::Core }
 
   describe ".prototype_name" do
     subject { example_malfunction_class.prototype_name }
