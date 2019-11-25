@@ -11,6 +11,8 @@ RSpec.describe Malfunction::AttributeError, type: :attribute_error do
   it { is_expected.to define_argument :attribute_name }
   it { is_expected.to define_argument :error_code }
 
+  it { is_expected.to define_option :message }
+
   it { is_expected.to alias_method(:eql?, :==) }
 
   describe "#attribute_name" do
