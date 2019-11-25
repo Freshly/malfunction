@@ -12,7 +12,7 @@ RSpec.describe Malfunction::Malfunction::Core, type: :concern do
   end
 
   describe "#initialize" do
-    subject { example_malfunction_class.new(details) }
+    subject(:_initialize) { example_malfunction_class.new(details) }
 
     let(:details) { nil }
 
@@ -40,6 +40,14 @@ RSpec.describe Malfunction::Malfunction::Core, type: :concern do
       let(:options) { Hash[*Faker::Lorem.words(2 * rand(1..2))].symbolize_keys }
 
       it { is_expected.to have_attributes(details: options) }
+    end
+
+    context "with other types" do
+      let(:details) { [] }
+
+      it "raises" do
+        expect { _initialize }.to raise_error ArgumentError, "details is invalid"
+      end
     end
   end
 end

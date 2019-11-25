@@ -17,7 +17,9 @@ module Malfunction
       end
 
       def initialize(details = {})
-        @details = details.presence || {}
+        raise ArgumentError, "details is invalid" unless details.nil? || details.respond_to?(:to_hash)
+
+        @details = details.presence&.to_h || {}
       end
     end
   end
