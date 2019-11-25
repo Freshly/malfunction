@@ -5,9 +5,10 @@ RSpec.shared_context "with an example malfunction" do
 
   let(:example_malfunction_class) { Class.new(Malfunction::MalfunctionBase) }
 
-  let(:example_malfunction_name) do
+  let(:example_prototype_name) do
     Array.new(2) { Faker::Internet.domain_word.capitalize }.join("")
   end
+  let(:example_malfunction_name) { "#{example_prototype_name}Malfunction" }
 
   before { stub_const(example_malfunction_name, example_malfunction_class) }
 end
