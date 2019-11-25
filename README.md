@@ -3,6 +3,9 @@
 An extensible way to encapsulate the variety of BadStuff that happens in Rails applications
 
 [![Gem Version](https://badge.fury.io/rb/malfunction.svg)](https://badge.fury.io/rb/malfunction)
+[![Build Status](https://semaphoreci.com/api/v1/freshly/malfunction/branches/develop/badge.svg)](https://semaphoreci.com/freshly/malfunction)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9cd538174249bb6b1798/maintainability)](https://codeclimate.com/github/Freshly/malfunction/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/9cd538174249bb6b1798/test_coverage)](https://codeclimate.com/github/Freshly/malfunction/test_coverage)
 
 * [Installation](#installation)
 * [Usage](#usage)
