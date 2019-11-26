@@ -122,10 +122,12 @@ RSpec.describe Malfunction::Malfunction::AttributeErrors, type: :concern do
         let(:error_code) { Faker::Internet.domain_word }
         let(:message) { Faker::Lorem.sentence }
 
+        it { is_expected.to be_an_instance_of Malfunction::AttributeErrorCollection }
+
         it "is an Malfunction::AttributeError with expected values" do
           expect(first_attribute_error).to be_an_instance_of Malfunction::AttributeError
           expect(first_attribute_error).
-          to have_attributes(attribute_name: attribute_name, error_code: error_code, message: message)
+            to have_attributes(attribute_name: attribute_name, error_code: error_code, message: message)
         end
       end
 

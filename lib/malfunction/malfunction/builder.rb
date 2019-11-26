@@ -7,6 +7,7 @@ module Malfunction
 
       included do
         define_callbacks_with_handler :build
+        memoize :build
       end
 
       class_methods do
