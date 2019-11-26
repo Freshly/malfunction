@@ -32,7 +32,7 @@ module Malfunction
       end
 
       def attribute_errors
-        [] if uses_attribute_errors?
+        AttributeErrorCollection.new if uses_attribute_errors?
       end
 
       def add_attribute_error(attribute_name, error_code, message = nil)
