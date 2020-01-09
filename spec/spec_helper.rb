@@ -7,7 +7,7 @@ require "simplecov"
 require "timecop"
 require "shoulda-matchers"
 
-require "spicerack/spec_helper"
+require "spicery/spec_helper"
 
 require_relative "../lib/malfunction/spec_helper"
 
