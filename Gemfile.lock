@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    malfunction (0.1.1)
-      activesupport (~> 5.2.1)
+    malfunction (0.1.2)
+      activesupport (>= 5.2.1)
       spicery (>= 0.20.4, < 1.0)
 
 GEM

@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
 
-  spec.add_runtime_dependency "activesupport", "~> 5.2.1"
+  spec.add_runtime_dependency "activesupport", ">= 5.2.1"
   spec.add_runtime_dependency "spicery", ">= 0.20.4", "< 1.0"
 
   spec.add_development_dependency "bundler", "~> 2.0.1"
