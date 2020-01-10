@@ -2,7 +2,7 @@
 
 ## 0.1.2
 
-*Release Date*: 2020/01/09
+*Release Date*: 2020/01/10
 
 - Loosened ActiveSupport requirement
 
