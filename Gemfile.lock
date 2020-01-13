@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    malfunction (0.1.2)
+    malfunction (0.2.0)
       activesupport (>= 5.2.1)
       spicery (>= 0.21.0, < 1.0)
 
