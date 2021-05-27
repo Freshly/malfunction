@@ -5,7 +5,7 @@ RSpec.describe Malfunction::MalfunctionBase, type: :malfunction do
 
   subject { example_malfunction_class }
 
-  it { is_expected.to inherit_from Spicerack::RootObject }
+  it { is_expected.to inherit_from Substance::RootObject }
 
   it { is_expected.to include_module Conjunction::Junction }
   it { is_expected.to have_conjunction_suffix "Malfunction" }

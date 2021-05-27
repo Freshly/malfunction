@@ -2,7 +2,9 @@
 
 require "active_support"
 
-require "spicery"
+require "substance"
+require "collectible"
+require "conjunction"
 
 require "malfunction/version"
 

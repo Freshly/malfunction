@@ -6,7 +6,7 @@ require_relative "malfunction/core"
 require_relative "malfunction/builder"
 
 module Malfunction
-  class MalfunctionBase < Spicerack::RootObject
+  class MalfunctionBase < Substance::RootObject
     include Conjunction::Junction
     suffixed_with "Malfunction"
 

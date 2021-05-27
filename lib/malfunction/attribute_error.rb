@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Malfunction
-  class AttributeError < Spicerack::InputObject
+  class AttributeError < Substance::InputObject
     argument :attribute_name
     argument :error_code
 
