@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming <!-- Add unreleased change notes here: -->
+
+- Restrict dependencies ([#22](https://github.com/Freshly/malfunction/pull/22))
+
 ## 0.2.0
 
 *Release Date*: 2020/01/13
