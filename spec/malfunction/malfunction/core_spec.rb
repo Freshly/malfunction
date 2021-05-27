@@ -28,7 +28,7 @@ RSpec.describe Malfunction::Malfunction::Core, type: :concern do
         context "with details" do
           subject { example_malfunction_class.new(details: details) }
 
-          let(:details) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
+          let(:details) { Hash[*Faker::Lorem.words(number: (2 * rand(1..2)))] }
 
           it { is_expected.to have_attributes(context: nil, details: details) }
         end
@@ -51,7 +51,7 @@ RSpec.describe Malfunction::Malfunction::Core, type: :concern do
           context "with details" do
             subject { example_malfunction_class.new(details: details) }
 
-            let(:details) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
+            let(:details) { Hash[*Faker::Lorem.words(number: (2 * rand(1..2)))] }
 
             it { is_expected.to have_attributes(context: nil, details: details) }
           end
@@ -93,7 +93,7 @@ RSpec.describe Malfunction::Malfunction::Core, type: :concern do
         end
 
         context "with details" do
-          let(:details) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
+          let(:details) { Hash[*Faker::Lorem.words(number: (2 * rand(1..2)))] }
 
           it { is_expected.to have_attributes(context: context, details: details) }
         end
