@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    malfunction (0.2.0)
+    malfunction (0.3.0)
       activesupport (>= 5.2.1)
       collectible (>= 0.21.0, < 1.0)
       conjunction (>= 0.21.0, < 1.0)
