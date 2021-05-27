@@ -6,7 +6,7 @@ RSpec.describe Malfunction::AttributeError, type: :attribute_error do
   let(:attribute_name) { Faker::Internet.domain_word }
   let(:error_code) { Faker::Internet.domain_word }
 
-  it { is_expected.to inherit_from Spicerack::InputObject }
+  it { is_expected.to inherit_from Substance::InputObject }
 
   it { is_expected.to define_argument :attribute_name }
   it { is_expected.to define_argument :error_code }

@@ -19,7 +19,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = "lib"
 
   spec.add_runtime_dependency "activesupport", ">= 5.2.1"
-  spec.add_runtime_dependency "spicery", ">= 0.21.0", "< 1.0"
+  spec.add_runtime_dependency "collectible", ">= 0.21.0", "< 1.0"
+  spec.add_runtime_dependency "conjunction", ">= 0.21.0", "< 1.0"
+  spec.add_runtime_dependency "short_circu_it", ">= 0.21.0", "< 1.0"
+  spec.add_runtime_dependency "substance", "< 1.0"
 
   spec.add_development_dependency "pry-byebug", ">= 3.7.0"
   spec.add_development_dependency "rake", "~> 10.0"
