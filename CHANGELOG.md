@@ -7,6 +7,7 @@
 *Release Date*: 2021/05/27
 
 - Restrict dependencies ([#22](https://github.com/Freshly/malfunction/pull/22))
+- Ruby 3.0 compatibility ([#24](https://github.com/Freshly/malfunction/pull/24))
 
 ## 0.2.0
 
