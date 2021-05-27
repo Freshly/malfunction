@@ -2,6 +2,10 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## 0.3.0
+
+*Release Date*: 2021/05/27
+
 - Restrict dependencies ([#22](https://github.com/Freshly/malfunction/pull/22))
 
 ## 0.2.0
