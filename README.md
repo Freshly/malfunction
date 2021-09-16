@@ -29,6 +29,61 @@ Or install it yourself as:
 
     $ gem install malfunction
 
+## What is Malfunction?
+
+Malfunctions are a framework for describing more sophisticated errors for Ruby on Rails and Gems.
+
+Automated error handling becomes easier and more extensible using Malfunctions; this is their primary use case.
+
+Malfunctions must be configured specifically for your gem or application and provides no out-of-the-box value.
+
+## Getting Started
+
+Within your application, create a `malfunctions` directory and create an `application_malfunction.rb`:
+
+```ruby
+class ApplicationMalfunction < Malfunction::MalfunctionBase; end
+```
+
+From here, you can define all your application specific errors. 
+
+An example case, a user tries to add an address which fails verification by a third party adding validation errors:
+
+```ruby
+class AddressVerificationMalfunction < ApplicationMalfunction
+  # Indicates this malfunction will have errors on attributes (helpful to passthru active record error data)
+  uses_attribute_errors
+  
+  # Contextualize the "broken" object passed into malfunction so you can reference it by this given name vs "context"
+  contextualize :address
+  
+  # If true the service determined all the data was true but the user likely typed their zipcode in wrong; common issue
+  attr_accessor :zipcode_mismatch
+  
+  def zipcode_mismatch?
+    @zipcode_mismatch
+  end
+
+  # The malfunction is built after being initialized with the context object and any details
+  on_build do
+    address.errors.each do |active_record_error|
+      add_attribute_error(active_record_error.attribute, active_record_error.type, active_record_error.full_message)
+    end
+  end
+end
+```
+
+This allows you to create a malfunction describing the problem:
+
+```ruby
+address = Address.new(address_params)
+service = AddressVerificationService.new(address)
+unless service.verified?
+  address_verification_malfunction = AddressVerificationMalfunction.build(address)
+  address_verification_malfunction.zipcode_mismatch = service.zipcode_mismatch?
+end
+```
+
 ## Usage
 
 TODO: Write usage instructions here
