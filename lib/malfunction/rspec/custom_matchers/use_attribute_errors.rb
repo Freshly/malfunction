@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# RSpec matcher that tests usage of the default `MalfunctionBase.uses_attribute_errors`
+# RSpec matcher that tests usage of `MalfunctionBase.uses_attribute_errors`
 #
 #     class FooMalfunction < Malfunction::Base
 #       uses_attribute_errors
